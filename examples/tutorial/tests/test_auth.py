@@ -27,7 +27,7 @@ def test_register(client, app):
         ("", "a", "a@a", "Se requiere el Usuario."),
         ("a", "", "a@a", "Se requiere la Contraseña."),
         ("a", "a", "", "Ingrese un email"),
-        ("test", "test", "a@a", "ya esta registrado como Usuario."),
+        ("test", "aa", "ab@a", "ya esta registrado como Usuario."),
         ("a", "a", "a@a", "ya esta registrado como Mail."),
     ),
 )
