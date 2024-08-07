@@ -24,10 +24,11 @@ def test_register(client, app):
 @pytest.mark.parametrize(
     ("username", "password", "user_email", "message"),
     (
-        ("", "a", "a@test", "Se requiere el Usuario."),
-        ("a", "", "a@test", "Se requiere la Contraseña."),
+        ("", "a", "a@a", "Se requiere el Usuario."),
+        ("a", "", "a@a", "Se requiere la Contraseña."),
         ("a", "a", "", "Ingrese un email"),
-        ("test", "test", "a@test", "ya esta registrado."),
+        ("test", "test", "a@a", "ya esta registrado como Usuario."),
+        ("a", "a", "a@a", "ya esta registrado como Mail."),
     ),
 )
 def test_register_validate_input(client, username, password, user_email, message):
