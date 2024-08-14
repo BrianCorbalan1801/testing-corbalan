@@ -147,3 +147,23 @@ def updateEmail():
         else:
             flash(error)
     return render_template('auth/update-email.html')
+
+def deleteUser():
+    if request.method == 'POST':
+        delUser = request.form['delete_User']
+        error = None
+        db = get_db()
+
+        if not delUser:
+            error = "Email is Required"
+
+        if error is None:
+            db.execute(
+                'UPDATE user SET delete_User = ? WHERE id = ?',
+                (delUser, g.user['id'])
+            )
+            db.commit()
+            return redirect(url_for('index'))
+        else:
+            flash(error)
+    return render_template('auth/update-email.html')
